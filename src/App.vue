@@ -145,30 +145,40 @@
 //   input.value.focus();
 // });
 
-import { ref } from "vue";
-import AlertBox from "./components/AlertBox.vue";
+//import AlertBox from "./components/AlertBox.vue";
 // import { ButtonCounter } from "./ButtonCounter.vue";
 // import ButtonCounter from "./components/ButtonCounter.vue";
 // import BlogPost from "./components/BlogPost.vue";
 
 // const props = defineProps(["title"]);
 // console.log(props.title);
+import { ref } from "vue";
+import BlogPost from "./components/BlogPost.vue";
 
-// const posts = ref([
-//   { id: 1, title: "My journey with Vue" },
-//   { id: 2, title: "Blogging with Vue" },
-//   { id: 3, title: "Why Vue is so fun" },
-// ]);
+const posts = ref([
+  { id: 1, title: "My journey with Vue" },
+  { id: 2, title: "Blogging with Vue" },
+  { id: 3, title: "Why Vue is so fun" },
+]);
 
 // const postFontSize = ref(1);
+
+
+// const count = ref(0);
+// onUpdated(() => {
+//   console.log(document.getElementById('count').textContent)
+// });
+
 </script>
 
 <template>
 
-  <AlertBox>
-    Some error occurred!
-  </AlertBox>
 
+  <BlogPost v-for="post in posts" v-bind="post"></BlogPost>
+
+  <!-- <BlogPost v-bind="posts[0]" @enlarge-text="posts[0].title += '!'"></BlogPost> -->
+  <!-- <button id="count" @click="count++">{{ count }}</button>  -->
+  <!-- <AlertBox> Some error occurred! </AlertBox> -->
 
   <!-- <div :style="{ fontSize: postFontSize + 'em' }">
     <BlogPost
@@ -228,7 +238,7 @@ import AlertBox from "./components/AlertBox.vue";
 <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" /> -->
   <!-- <label for="mike">Mike</label> -->
 
-  <!-- 
+  <!--
 <textarea v-model="text"></textarea>
 
   <h1>Messge ; {{ message }}</h1><br>
@@ -281,7 +291,7 @@ import AlertBox from "./components/AlertBox.vue";
   {{ state.count }}
 </button>-->
 
-  <!-- 
+  <!--
   <button @click="countNum">
     {{ count }}
   </button> -->
