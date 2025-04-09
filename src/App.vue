@@ -152,14 +152,19 @@
 
 // const props = defineProps(["title"]);
 // console.log(props.title);
-import { ref } from "vue";
-import BlogPost from "./components/BlogPost.vue";
+// import { ref } from "vue";
+// import Child from "./components/Child.vue";
 
-const posts = ref([
-  { id: 1, title: "My journey with Vue" },
-  { id: 2, title: "Blogging with Vue" },
-  { id: 3, title: "Why Vue is so fun" },
-]);
+// const msg = ref("Hello World");
+
+// const updateModel = ref(0);
+// import BlogPost from "./components/BlogPost.vue";
+
+// const posts = ref([
+//   { id: 1, title: "My journey with Vue" },
+//   { id: 2, title: "Blogging with Vue" },
+//   { id: 3, title: "Why Vue is so fun" },
+// ]);
 
 // const postFontSize = ref(1);
 
@@ -169,12 +174,48 @@ const posts = ref([
 //   console.log(document.getElementById('count').textContent)
 // });
 
+import Card from "./components/Card.vue";
+
+
+import { provide, ref } from 'vue'
+
+const count = ref(0)
+
+function updateCount() {
+  count.value++
+}
+
+provide('count', {
+  count,
+  updateCount
+})
 </script>
 
 <template>
 
+  <Card>
+    <template #header>
+      <h1>This is the header</h1>
+    </template>
 
-  <BlogPost v-for="post in posts" v-bind="post"></BlogPost>
+    <template #default>
+      <p>This is the content</p>
+    </template>
+
+    <template #footer>
+      <em>This is the footer</em>
+    </template>
+  </Card>
+<!-- 
+  <h1>{{ msg }}</h1>
+  <Child v-model="msg" /> -->
+
+  <!-- <Child> 
+    Manav Vaishnani
+  </Child> -->
+  <!-- <Child v-model.capitalize="msg" /> -->
+
+  <!-- <BlogPost v-for="post in posts" v-bind="post"></BlogPost> -->
 
   <!-- <BlogPost v-bind="posts[0]" @enlarge-text="posts[0].title += '!'"></BlogPost> -->
   <!-- <button id="count" @click="count++">{{ count }}</button>  -->
@@ -310,3 +351,16 @@ const posts = ref([
   <!-- message.split('').reverse().join('') -->
   <!-- <h1>{{ msg }}</h1> -->
 </template>
+
+
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+    word-wrap: break-word;
+  }
+</style>
