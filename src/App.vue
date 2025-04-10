@@ -1,4 +1,6 @@
 <script setup>
+import router from './router/router';
+
 // import { ref } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue';
 
@@ -174,26 +176,40 @@
 //   console.log(document.getElementById('count').textContent)
 // });
 
-import Card from "./components/Card.vue";
+// import Card from "./components/Card.vue";
 
 
-import { provide, ref } from 'vue'
+// import { provide, ref } from 'vue'
 
-const count = ref(0)
+// const count = ref(0)
 
-function updateCount() {
-  count.value++
-}
+// function updateCount() {
+//   count.value++
+// }
 
-provide('count', {
-  count,
-  updateCount
-})
+// provide('count', {
+//   count,
+//   updateCount
+// })
+
+
 </script>
 
 <template>
 
-  <Card>
+  <div>
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
+
+
+    asldjf;alsdkfj
+    
+    <router-view></router-view>
+  </div>
+
+  <!-- <Card>
     <template #header>
       <h1>This is the header</h1>
     </template>
@@ -205,7 +221,7 @@ provide('count', {
     <template #footer>
       <em>This is the footer</em>
     </template>
-  </Card>
+  </Card> -->
 <!-- 
   <h1>{{ msg }}</h1>
   <Child v-model="msg" /> -->
